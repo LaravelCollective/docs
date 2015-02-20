@@ -9,7 +9,7 @@
 - [Checkboxes and Radio Buttons](#checkboxes-and-radio-buttons)
 - [File Input](#file-input)
 - [Number Input](#number)
-- [Date Input](#datei)
+- [Date Input](#date)
 - [Drop-Down Lists](#drop-down-lists)
 - [Buttons](#buttons)
 - [Custom Macros](#custom-macros)
@@ -206,7 +206,7 @@ echo Form::radio('name', 'value', true);
 echo Form::number('name', 'value');
 ```
 
-<a name="number"></a>
+<a name="date"></a>
 ## Date
 
 #### Generating A Date Input
