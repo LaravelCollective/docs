@@ -9,6 +9,7 @@
 - [Checkboxes and Radio Buttons](#checkboxes-and-radio-buttons)
 - [File Input](#file-input)
 - [Number Input](#number)
+- [Date Input](#datei)
 - [Drop-Down Lists](#drop-down-lists)
 - [Buttons](#buttons)
 - [Custom Macros](#custom-macros)
@@ -203,6 +204,15 @@ echo Form::radio('name', 'value', true);
 
 ```php
 echo Form::number('name', 'value');
+```
+
+<a name="number"></a>
+## Date
+
+#### Generating A Date Input
+
+```php
+echo Form::date('name', \Carbon\Carbon::now());
 ```
 
 <a name="file-input"></a>
