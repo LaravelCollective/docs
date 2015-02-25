@@ -1,2 +1,2 @@
-- [Annotations](/docs/master/annotations)
-- [HTML & Forms](/docs/master/html)
+- [Annotations](/docs/5.0/annotations)
+- [HTML & Forms](/docs/5.0/html)
