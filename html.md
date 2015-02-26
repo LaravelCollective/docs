@@ -20,9 +20,11 @@
 
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/html`.
 
-    "require": {
-        "laravelcollective/html": "~5.0"
-    }
+```json
+"require": {
+    "laravelcollective/html": "~5.0"
+}
+```
 
 Next, update Composer from the Terminal:
 
@@ -56,7 +58,7 @@ Finally, add two class aliases to the `aliases` array of `config/app.php`:
 
 ```php
 {!! Form::open(array('url' => 'foo/bar')) !!}
-  //
+	//
 {!! Form::close() !!}
 ```
 
@@ -88,7 +90,7 @@ If your form is going to accept file uploads, add a `files` option to your array
 
 ```php
 echo Form::open(array('url' => 'foo/bar', 'files' => true))
-```
+````
 
 <a name="csrf-protection"></a>
 ## CSRF Protection
@@ -103,10 +105,10 @@ echo Form::token();
 
 #### Attaching The CSRF Filter To A Route
 
-```php
+```
 Route::post('profile', array('before' => 'csrf', function()
 {
-  //
+	//
 }));
 ```
 
@@ -245,8 +247,8 @@ echo Form::select('size', array('L' => 'Large', 'S' => 'Small'), 'S');
 
 ```php
 echo Form::select('animal', array(
-  'Cats' => array('leopard' => 'Leopard'),
-  'Dogs' => array('spaniel' => 'Spaniel'),
+	'Cats' => array('leopard' => 'Leopard'),
+	'Dogs' => array('spaniel' => 'Spaniel'),
 ));
 ```
 
@@ -283,7 +285,7 @@ It's easy to define your own custom Form class helpers called "macros". Here's h
 ```php
 Form::macro('myField', function()
 {
-  return '<input type="awesome">';
+	return '<input type="awesome">';
 });
 ```
 
@@ -294,6 +296,7 @@ Now you can call your macro using its name:
 ```php
 echo Form::myField();
 ```
+
 
 <a name="generating-urls"></a>
 ##Generating URLs
