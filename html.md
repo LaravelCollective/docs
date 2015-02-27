@@ -90,7 +90,7 @@ If your form is going to accept file uploads, add a `files` option to your array
 
 ```php
 echo Form::open(array('url' => 'foo/bar', 'files' => true))
-````
+```
 
 <a name="csrf-protection"></a>
 ## CSRF Protection
@@ -105,7 +105,7 @@ echo Form::token();
 
 #### Attaching The CSRF Filter To A Route
 
-```
+```php
 Route::post('profile', array('before' => 'csrf', function()
 {
 	//
@@ -296,7 +296,6 @@ Now you can call your macro using its name:
 ```php
 echo Form::myField();
 ```
-
 
 <a name="generating-urls"></a>
 ##Generating URLs
