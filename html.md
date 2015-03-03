@@ -298,4 +298,34 @@ echo Form::myField();
 <a name="generating-urls"></a>
 ##Generating URLs
 
-For more information on generating URL's, check out the documentation on [helpers](http://laravel.com/docs/helpers#urls).
+#### link_to
+
+Generate a HTML link to the given URL.
+
+```php
+echo link_to('foo/bar', $title = null, $attributes = array(), $secure = null);
+```
+
+#### link_to_asset
+
+Generate a HTML link to the given asset.
+
+```php
+echo link_to_asset('foo/bar.zip', $title = null, $attributes = array(), $secure = null);
+```
+
+#### link_to_route
+
+Generate a HTML link to the given named route.
+
+```php
+echo link_to_route('route.name', $title = null, $parameters = array(), $attributes = array());
+```
+
+#### link_to_action
+
+Generate a HTML link to the given controller action.
+
+```php
+echo link_to_action('HomeController@getIndex', $title = null, $parameters = array(), $attributes = array());
+```
