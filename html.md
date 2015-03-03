@@ -302,22 +302,30 @@ echo Form::myField();
 
 Generate a HTML link to the given URL.
 
-    echo link_to('foo/bar', $title = null, $attributes = array(), $secure = null);
+```php
+echo link_to('foo/bar', $title = null, $attributes = array(), $secure = null);
+```
 
 #### link_to_asset
 
 Generate a HTML link to the given asset.
 
-    echo link_to_asset('foo/bar.zip', $title = null, $attributes = array(), $secure = null);
+```php
+echo link_to_asset('foo/bar.zip', $title = null, $attributes = array(), $secure = null);
+```
 
 #### link_to_route
 
 Generate a HTML link to the given named route.
 
-    echo link_to_route('route.name', $title = null, $parameters = array(), $attributes = array());
+```php
+echo link_to_route('route.name', $title = null, $parameters = array(), $attributes = array());
+```
 
 #### link_to_action
 
 Generate a HTML link to the given controller action.
 
-    echo link_to_action('HomeController@getIndex', $title = null, $parameters = array(), $attributes = array());
+```php
+echo link_to_action('HomeController@getIndex', $title = null, $parameters = array(), $attributes = array());
+```
