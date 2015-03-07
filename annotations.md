@@ -5,6 +5,7 @@
 - [Event Annotations](#events)
 - [Route Annotations](#routes)
 - [Scanning Controllers](#controllers)
+- [Model Annotations](#models)
 - [Custom Annotations](#custom-annotations)
 
 <a name="installation"></a>
@@ -44,6 +45,13 @@ class AnnotationsServiceProvider extends ServiceProvider {
      * @var array
      */
     protected $scanRoutes = [];
+
+    /**
+     * The classes to scan for model annotations.
+     *
+     * @var array
+     */
+    protected $scanModels = [];
 
     /**
      * Determines if we will auto-scan in the local environment.
@@ -315,6 +323,22 @@ public function routeScans() {
     return $classes;
 }
 ```
+
+<a name="models"></a>
+## Model Scanning
+
+You can use annotations to automatically bind your models to route parameters, using [Route Model Binding](http://laravel.com/docs/5.0/routing#route-model-binding). To do this, use the `@Bind` annotation.
+
+```php
+/**
+ * @Bind("users")
+ */
+class User extends Eloquent {
+  //
+}
+```
+
+This is the equivalent of calling `Route::model('users', 'App\Users')`. In order for your annotations to be scanned from your models, you will need to add them to your Annotations Service Provider's `protected $scanModels` array.
 
 <a name="custom-annotations"></a>
 ## Custom Annotations
