@@ -338,7 +338,7 @@ class User extends Eloquent {
 }
 ```
 
-This is the equivalent of calling `Route::model('users', 'App\Users')`. In order for your annotations to be scanned from your models, you will need to add them to your Annotations Service Provider's `protected $scanRoutes` array.
+This is the equivalent of calling `Route::model('users', 'App\Users')`. In order for your annotations to be scanned from your models, you will need to add them to your Annotations Service Provider's `protected $scanModels` array.
 
 <a name="custom-annotations"></a>
 ## Custom Annotations
