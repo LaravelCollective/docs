@@ -33,7 +33,7 @@ Next, add your new provider to the `providers` array of `config/app.php`:
   ],
 ```
 
-Finally, add two class aliases to the `aliases` array of `config/app.php`:
+Next, add a class aliases to the `aliases` array of `config/app.php`:
 
 ```php
   'aliases' => [
@@ -41,6 +41,12 @@ Finally, add two class aliases to the `aliases` array of `config/app.php`:
       'SSH' => 'Collective\Remote\RemoteFacade',
     // ...
   ],
+```
+
+Finally, publish the config file:
+
+```php
+  php artisan vendor:publish --provider="Collective\Remote\RemoteServiceProvider"
 ```
 <a name="configuration"></a>
 ## Configuration
