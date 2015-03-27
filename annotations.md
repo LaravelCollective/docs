@@ -118,7 +118,7 @@ Add controllers to the `protected $scanRoutes` array to scan for route annotatio
     ];
 ```
 
-Add models to the `protectecd $scanModels` array to scan for model annotations.
+Add models to the `protected $scanModels` array to scan for model annotations.
 
 ```php
     /**
