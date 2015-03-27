@@ -68,6 +68,14 @@ class AnnotationsServiceProvider extends ServiceProvider {
      */
     protected $scanControllers = false;
 
+    /**
+     * Determines whether or not to automatically scan all namespaced
+     * classes for event, route, and model annotations.
+     *
+     * @var bool
+     */
+    protected $scanEverything = false;
+
 }
 ```
 
@@ -84,7 +92,7 @@ Finally, add your new provider to the `providers` array of `config/app.php`:
 <a name="scanning"></a>
 ## Setting up Scanning
 
-Scanning your controllers for annotations can be configured by editing the `protected $scanEvents` and `protected $scanRoutes` in your `AnnotationsServiceProvider`. For example, if you wanted to scan `App\Handlers\Events\MailHandler` for event annotations, you would add it to `protected $scanEvents` like so:
+Add event handler classes to the `protected $scanEvents` array to scan for event annotations.
 
 ```php
     /**
@@ -97,7 +105,7 @@ Scanning your controllers for annotations can be configured by editing the `prot
     ];
 ```
 
-Likewise, if you wanted to scan `App\Http\Controllers\HomeController` for route annotations, you would add it to `protected $scanRoutes` like so:
+Add controllers to the `protected $scanRoutes` array to scan for route annotations.
 
 ```php
     /**
@@ -109,6 +117,21 @@ Likewise, if you wanted to scan `App\Http\Controllers\HomeController` for route 
       'App\Http\Controllers\HomeController',
     ];
 ```
+
+Add models to the `protectecd $scanModels` array to scan for model annotations.
+
+```php
+    /**
+     * The classes to scan for model annotations.
+     *
+     * @var array
+     */
+    protected $scanModels = [
+      'App\User',
+    ];
+```
+
+Alternatively, you can set `protected $scanEverything` to `true` to automatically scan all classes within your application's namespace. *Note:* This may increase the time required to execute the scanners, depending on the size of your application.
 
 Scanning your event handlers and controllers can be done manually by using `php artisan event:scan` and `php artisan route:scan` respectively, or automatically by setting `protected $scanWhenLocal = true`.
 
@@ -140,6 +163,8 @@ class MailHandler {
 
 <a name="routes"></a>
 ## Route Annotations
+
+Route annotations can be incredibly powerful, however the order of your route definitions can impact how your application matches specific routes, specifically any wildcard routes. If `protected $scanEverything` is set to `true`, you will have no control over the order of your route definitions.
 
 ### @Get
 
@@ -325,7 +350,7 @@ public function routeScans() {
 ```
 
 <a name="models"></a>
-## Model Scanning
+## Model Annotations
 
 You can use annotations to automatically bind your models to route parameters, using [Route Model Binding](http://laravel.com/docs/5.0/routing#route-model-binding). To do this, use the `@Bind` annotation.
 
@@ -338,7 +363,7 @@ class User extends Eloquent {
 }
 ```
 
-This is the equivalent of calling `Route::model('users', 'App\Users')`. In order for your annotations to be scanned from your models, you will need to add them to your Annotations Service Provider's `protected $scanModels` array.
+This is the equivalent of calling `Route::model('users', 'App\Users')`.
 
 <a name="custom-annotations"></a>
 ## Custom Annotations
