@@ -51,6 +51,8 @@ Finally, add two class aliases to the `aliases` array of `config/app.php`:
   ],
 ```
 
+> Looking to install this package in <a href="http://lumen.laravel.com" target="_blank">Lumen</a>? First of all, making this package compatible with Lumen will require some core changes to Lumen, which we believe would dampen the effectiveness of having Lumen in the first place. Secondly, it is our belief that if you need this package in your application, then you should be using Laravel anyway.
+
 <a name="opening-a-form"></a>
 ## Opening A Form
 
