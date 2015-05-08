@@ -133,7 +133,7 @@ Add models to the `protected $scanModels` array to scan for model annotations.
 
 Alternatively, you can set `protected $scanEverything` to `true` to automatically scan all classes within your application's namespace. *Note:* This may increase the time required to execute the scanners, depending on the size of your application.
 
-Scanning your event handlers and controllers can be done manually by using `php artisan event:scan` and `php artisan route:scan` respectively, or automatically by setting `protected $scanWhenLocal = true`.
+Scanning your event handlers, controllers, and models can be done manually by using `php artisan event:scan`, `php artisan route:scan`, or `php artisan model:scan` respectively. In the local environment, you can scan them automatically by setting `protected $scanWhenLocal = true`.
 
 <a name="events"></a>
 ## Event Annotations
