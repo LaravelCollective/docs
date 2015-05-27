@@ -296,6 +296,20 @@ You can also specify the route names of each resource method.
    */
 ```
 
+### @Controller
+
+Using the `@Controller` annotation on a controller allows you to set various options for the routes contained in it:
+
+```php
+<?php
+/**
+ * @Controller(prefix="admin", domain="foo.com")
+ */
+class AdminController extends Controller {
+  // All routes will be prefixed by admin/
+}
+```
+
 <a name="controllers"></a>
 ## Scan the Controllers Directory
 
