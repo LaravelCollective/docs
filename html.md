@@ -22,7 +22,7 @@ Begin by installing this package through Composer. Edit your project's `composer
 
 ```json
 "require": {
-    "laravelcollective/html": "~5.0"
+    "laravelcollective/html": "5.1.*"
 }
 ```
 
@@ -35,7 +35,7 @@ Next, add your new provider to the `providers` array of `config/app.php`:
 ```php
   'providers' => [
     // ...
-    'Collective\Html\HtmlServiceProvider',
+    Collective\Html\HtmlServiceProvider::class,
     // ...
   ],
 ```
@@ -45,8 +45,8 @@ Finally, add two class aliases to the `aliases` array of `config/app.php`:
 ```php
   'aliases' => [
     // ...
-      'Form' => 'Collective\Html\FormFacade',
-      'Html' => 'Collective\Html\HtmlFacade',
+      'Form' => Collective\Html\FormFacade::class,
+      'Html' => Collective\Html\HtmlFacade::class,
     // ...
   ],
 ```

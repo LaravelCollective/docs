@@ -16,7 +16,7 @@
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/remote`.
 
     "require": {
-        "laravelcollective/remote": "~5.0"
+        "laravelcollective/remote": "5.1.*"
     }
 
 Next, update Composer from the Terminal:
@@ -28,7 +28,7 @@ Next, add your new provider to the `providers` array of `config/app.php`:
 ```php
   'providers' => [
     // ...
-    'Collective\Remote\RemoteServiceProvider',
+    Collective\Remote\RemoteServiceProvider::class,
     // ...
   ],
 ```
@@ -38,7 +38,7 @@ Next, add a class aliases to the `aliases` array of `config/app.php`:
 ```php
   'aliases' => [
     // ...
-      'SSH' => 'Collective\Remote\RemoteFacade',
+      'SSH' => Collective\Remote\RemoteFacade::class,
     // ...
   ],
 ```

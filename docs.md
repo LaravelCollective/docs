@@ -1,3 +1,3 @@
-- [Annotations](/docs/5.0/annotations)
-- [HTML & Forms](/docs/5.0/html)
-- [Remote (SSH)](/docs/5.0/ssh)
+- [Annotations](/docs/5.1/annotations)
+- [HTML & Forms](/docs/5.1/html)
+- [Remote (SSH)](/docs/5.1/ssh)

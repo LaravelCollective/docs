@@ -16,7 +16,7 @@
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/annotations`.
 
     "require": {
-        "laravelcollective/annotations": "~5.0"
+        "laravelcollective/annotations": "5.1.*"
     }
 
 Next, update Composer from the Terminal:
@@ -84,7 +84,7 @@ Finally, add your new provider to the `providers` array of `config/app.php`:
 ```php
   'providers' => [
     // ...
-    'App\Providers\AnnotationsServiceProvider',
+    App\Providers\AnnotationsServiceProvider::class
     // ...
   ];
 ```
@@ -101,7 +101,7 @@ Add event handler classes to the `protected $scanEvents` array to scan for event
      * @var array
      */
     protected $scanEvents = [
-      'App\Handlers\Events\MailHandler',
+      App\Handlers\Events\MailHandler::class,
     ];
 ```
 
@@ -114,7 +114,7 @@ Add controllers to the `protected $scanRoutes` array to scan for route annotatio
      * @var array
      */
     protected $scanRoutes = [
-      'App\Http\Controllers\HomeController',
+      App\Http\Controllers\HomeController::class,
     ];
 ```
 
@@ -318,7 +318,7 @@ public function routeScans() {
     $classes = parent::routeScans();
 
     if ( $this->app->environment('local') ) {
-        $classes = array_merge($classes, ['App\\Http\\Controllers\\LocalOnlyController']);
+        $classes = array_merge($classes, [App\Http\Controllers\LocalOnlyController::class]);
     }
 
     return $classes;
@@ -341,7 +341,7 @@ public function routeScans() {
     {
         $classes = array_merge(
             $classes,
-            $this->getClassesFromNamespace( 'App\\Http\\Controllers\\Local' )
+            $this->getClassesFromNamespace( App\Http\Controllers\Local::class )
         );
     }
 
