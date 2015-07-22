@@ -170,7 +170,7 @@ echo Form::text('email', 'example@gmail.com');
 #### Generating A Password Input
 
 ```php
-echo Form::password('password');
+echo Form::password('password', array('class' => 'awesome'));
 ```
 
 #### Generating Other Inputs
