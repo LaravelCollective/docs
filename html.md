@@ -243,6 +243,12 @@ echo Form::select('size', array('L' => 'Large', 'S' => 'Small'));
 echo Form::select('size', array('L' => 'Large', 'S' => 'Small'), 'S');
 ```
 
+#### Generating a Drop-Down List With an Empty Placeholder
+
+```php
+echo Form::select('size', array('L' => 'Large', 'S' => 'Small'), null, ['optional' => 'Pick a size...']);
+```
+
 #### Generating A Grouped List
 
 ```php
