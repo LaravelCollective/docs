@@ -33,7 +33,7 @@ Next, add your new provider to the `providers` array of `config/app.php`:
   ],
 ```
 
-Next, add a class aliases to the `aliases` array of `config/app.php`:
+Next, add the class alias to the `aliases` array of `config/app.php`:
 
 ```php
   'aliases' => [
