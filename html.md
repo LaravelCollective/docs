@@ -4,6 +4,7 @@
 - [Opening A Form](#opening-a-form)
 - [CSRF Protection](#csrf-protection)
 - [Form Model Binding](#form-model-binding)
+- [Form Model Accessors](#form-model-accessors)
 - [Labels](#labels)
 - [Text, Text Area, Password & Hidden Fields](#text)
 - [Checkboxes and Radio Buttons](#checkboxes-and-radio-buttons)
@@ -51,7 +52,7 @@ Finally, add two class aliases to the `aliases` array of `config/app.php`:
   ],
 ```
 
-> Looking to install this package in <a href="http://lumen.laravel.com" target="_blank">Lumen</a>? First of all, making this package compatible with Lumen will require some core changes to Lumen, which we believe would dampen the effectiveness of having Lumen in the first place. Secondly, it is our belief that if you need this package in your application, then you should be using Laravel anyway.
+> Looking to install this package in <a href="http://lumen.laravel.com" target="\_blank">Lumen</a>? First of all, making this package compatible with Lumen will require some core changes to Lumen, which we believe would dampen the effectiveness of having Lumen in the first place. Secondly, it is our belief that if you need this package in your application, then you should be using Laravel anyway.
 
 <a name="opening-a-form"></a>
 ## Opening A Form
@@ -134,6 +135,47 @@ Now, when you generate a form element, like a text input, the model's value matc
 This allows you to quickly build forms that not only bind to model values, but easily re-populate if there is a validation error on the server!
 
 > **Note:** When using `Form::model`, be sure to close your form with `Form::close`!
+
+<a name="form-model-accessors"></a>
+#### Form Model Accessors
+
+Laravel's Eloquent Accessor allow you to manipulate a model attribute before returning it. This can be extremely useful for defining global date formats, for example. However, the date format used for display might not match the date format used for form elements. You can solve this by creating two separate accessors: a standard accessor, *and/or* a form accessor.
+
+To define a form accessor, create a `formFooAttribute` method on your model where `Foo` is the "camel" cased name of the column you wish to access. In this example, we'll define an accessor for the `date_of_birth` attribute. The accessor will automatically be called by the HTML Form Builder when attempting to pre-fill a form field when `Form::model()` is used.
+
+```php
+<?php
+
+namespace App;
+
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * Get the user's first name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getDateOfBirthAttribute($value)
+    {
+        return Carbon::parse($value)->format('m/d/Y');
+    }
+
+    /**
+     * Get the user's first name for forms.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function formDateOfBirthAttribute($value)
+    {
+        return Carbon::parse($value)->format('Y-m-d');
+    }
+}
+```
 
 <a name="labels"></a>
 ## Labels
