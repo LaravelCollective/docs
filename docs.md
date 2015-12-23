@@ -1,3 +1,5 @@
-- [Annotations](/docs/5.1/annotations)
-- [HTML & Forms](/docs/5.1/html)
-- [Remote (SSH)](/docs/5.1/ssh)
+- [Annotations](/docs/5.2/annotations)
+- [HTML & Forms](/docs/5.2/html)
+- [Remote (SSH)](/docs/5.2/ssh)
+- [Iron Queue](/docs/5.2/iron-queue)
+- [Command Bus](/docs/5.2/bus)

@@ -15,14 +15,14 @@
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/bus`.
 
     "require": {
-        "laravelcollective/bus": "5.1.*"
+        "laravelcollective/bus": "5.2.\*"
     }
 
 Next, update Composer from the Terminal:
 
     composer update
 
-Remove ```php Illuminate\Bus\BusServiceProvider``` from your app.php configuration file.
+Remove `Illuminate\Bus\BusServiceProvider` from your app.php configuration file.
 
 Next, add your new provider to the `providers` array of `config/app.php`:
 
@@ -34,7 +34,7 @@ Next, add your new provider to the `providers` array of `config/app.php`:
   ],
 ```
 
-If you are type-hinting ```php Illuminate\Bus\Dispatcher```, you should now type-hint ```php Collective\Bus\Dispatcher```.
+If you are type-hinting `Illuminate\Bus\Dispatcher`, you should now type-hint `Collective\Bus\Dispatcher`.
 
 <a name="introduction"></a>
 ## Introduction
