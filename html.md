@@ -14,6 +14,7 @@
 - [Drop-Down Lists](#drop-down-lists)
 - [Buttons](#buttons)
 - [Custom Macros](#custom-macros)
+- [Custom Components](#custom-components)
 - [Generating URLs](#generating-urls)
 
 <a name="installation"></a>
@@ -347,6 +348,56 @@ Now you can call your macro using its name:
 
 ```php
 echo Form::myField();
+```
+
+<a name="custom-components"></a>
+##Custom Components
+
+#### Registering A Custom Component
+
+Custom Components are similar to Custom Macros, however instead of using a closure to generate the resulting HTML, Components utilize [Laravel Blade Templates](http://laravel.com/docs/5.2/blade). Components can be incredibly useful for developers who use [Twitter Bootstrap](http://getbootstrap.com/), or any other front-end framework, which requires additional markup to properly render forms.
+
+Let's build a Form Component for a simple Bootstrap text input. You might consider registering your Components inside a Service Provider's `boot` method.
+
+```php
+Form::component('bsText', 'components.form.text', ['name', 'value', 'attributes']);
+```
+
+Notice how we reference a view path of `components.form.text`. Also, the array we provided is a sort of method signature for your Component. This defines the names of the variables that will be passed to your view. Your view might look something like this:
+
+```php
+// resources/views/components/form/text.blade.php
+<div class="form-group">
+    {{ Form::label($name, null, ['class' => 'control-label']) }}
+    {{ Form::text($name, $value, array_merge(['class' => 'form-control'], $attributes)) }}
+</div>
+```
+
+> Custom Components can also be created on the `Html` facade in the same fashion as on the `Form` facade.
+
+##### Providing Default Values
+
+When defining your Custom Component's method signature, you can provide default values simply by giving your array items values, like so:
+
+```php
+Form::component('bsText', 'components.form.text', ['name', 'value' => null, 'attributes' => []]);
+```
+
+#### Calling A Custom Form Component
+
+Using our example from above (specifically, the one with default values provided), you can call your Custom Component like so:
+
+```php
+{{ Form::bsText('first_name') }}
+```
+
+This would result in something like the following HTML output:
+
+```php
+<div class="form-group">
+    <label for="first_name">First Name</label>
+    <input type="text" name="first_name" value="" class="form-control">
+</div>
 ```
 
 <a name="generating-urls"></a>
