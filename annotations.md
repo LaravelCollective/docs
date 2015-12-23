@@ -16,7 +16,7 @@
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/annotations`.
 
     "require": {
-        "laravelcollective/annotations": "5.1.*"
+        "laravelcollective/annotations": "5.2.*"
     }
 
 Next, update Composer from the Terminal:

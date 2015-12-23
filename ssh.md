@@ -16,7 +16,7 @@
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/remote`.
 
     "require": {
-        "laravelcollective/remote": "5.1.*"
+        "laravelcollective/remote": "5.2.*"
     }
 
 Next, update Composer from the Terminal:
@@ -131,4 +131,3 @@ Laravel includes a helpful command for tailing the `laravel.log` files on any of
 	php artisan tail staging
 
 	php artisan tail staging --path=/path/to/log.file
-
