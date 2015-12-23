@@ -118,7 +118,7 @@ Add controllers to the `protected $scanRoutes` array to scan for route annotatio
     ];
 ```
 
-Add models to the `protectecd $scanModels` array to scan for model annotations.
+Add models to the `protected $scanModels` array to scan for model annotations.
 
 ```php
     /**
@@ -133,7 +133,7 @@ Add models to the `protectecd $scanModels` array to scan for model annotations.
 
 Alternatively, you can set `protected $scanEverything` to `true` to automatically scan all classes within your application's namespace. *Note:* This may increase the time required to execute the scanners, depending on the size of your application.
 
-Scanning your event handlers and controllers can be done manually by using `php artisan event:scan` and `php artisan route:scan` respectively, or automatically by setting `protected $scanWhenLocal = true`.
+Scanning your event handlers, controllers, and models can be done manually by using `php artisan event:scan`, `php artisan route:scan`, or `php artisan model:scan` respectively. In the local environment, you can scan them automatically by setting `protected $scanWhenLocal = true`.
 
 <a name="events"></a>
 ## Event Annotations
@@ -294,6 +294,20 @@ You can also specify the route names of each resource method.
   /**
    * @Resource('users', names={"index"="user.all", "show"="user.view"})
    */
+```
+
+### @Controller
+
+Using the `@Controller` annotation on a controller allows you to set various options for the routes contained in it:
+
+```php
+<?php
+/**
+ * @Controller(prefix="admin", domain="foo.com")
+ */
+class AdminController extends Controller {
+  // All routes will be prefixed by admin/
+}
 ```
 
 <a name="controllers"></a>
