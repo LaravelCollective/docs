@@ -110,7 +110,7 @@ If you glance at your application's base controller, you will see the `Dispatche
 		);
 	}
 
-The command bus will take care of executing the command and calling the IoC container to inject any needed dependencies into the `handle` method.
+The command bus will take care of executing the command and calling the service container to inject any needed dependencies into the `handle` method.
 
 You may add the `Illuminate\Foundation\Bus\DispatchesCommands` trait to any class you wish. If you would like to receive a command bus instance through the constructor of any of your classes, you may type-hint the `Illuminate\Contracts\Bus\Dispatcher` interface. Finally, you may also use the `Bus` facade to quickly dispatch commands:
 
@@ -170,7 +170,7 @@ A command pipe is defined with a `handle` method, just like a middleware:
 
 	}
 
-Command pipe classes are resolved through the [IoC container](/docs/{{version}}/container), so feel free to type-hint any dependencies you need within their constructors.
+Command pipe classes are resolved through the [service container](http://laravel.com/docs/container), so feel free to type-hint any dependencies you need within their constructors.
 
 You may even define a `Closure` as a command pipe:
 
