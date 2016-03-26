@@ -145,7 +145,7 @@ If you would like to convert an existing command into a queued command, simply i
 
 Then, just write your command normally. When you dispatch it to the bus that bus will automatically queue the command for background processing. It doesn't get any easier than that.
 
-For more information on interacting with queued commands, view the full [queue documentation](/docs/{{version}}/queues).
+For more information on interacting with queued commands, view the full [queue documentation](http://laravel.com/docs/{{version}}/queues).
 
 <a name="command-pipeline"></a>
 ## Command Pipeline
