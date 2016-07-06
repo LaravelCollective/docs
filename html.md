@@ -282,6 +282,12 @@ echo Form::file('image');
 echo Form::select('size', array('L' => 'Large', 'S' => 'Small'));
 ```
 
+#### Generating A Drop-Down List That Allows Multiple Selection
+
+```php
+echo Form::select('size', array('L' => 'Large', 'S' => 'Small'), null, ['multiple' => true]);
+```
+
 #### Generating A Drop-Down List With Selected Default
 
 ```php
