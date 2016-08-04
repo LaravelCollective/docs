@@ -16,7 +16,7 @@
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/remote`.
 
     "require": {
-        "laravelcollective/remote": "5.2.*"
+        "laravelcollective/remote": "5.3.\*"
     }
 
 Next, update Composer from the Terminal:
@@ -55,7 +55,7 @@ Laravel includes a simple way to SSH into remote servers and run commands, allow
 
 The configuration file is located at `config/remote.php`, and contains all of the options you need to configure your remote connections. The `connections` array contains a list of your servers keyed by name. Simply populate the credentials in the `connections` array and you will be ready to start running remote tasks. Note that the `SSH` can authenticate using either a password or an SSH key.
 
-> **Note:** Need to easily run a variety of tasks on your remote server? Check out the [Envoy task runner](http://laravel.com/docs/5.0/envoy)!
+> **Note:** Need to easily run a variety of tasks on your remote server? Check out the [Envoy task runner](http://laravel.com/docs/5.3/envoy)!
 
 <a name="basic-usage"></a>
 ## Basic Usage

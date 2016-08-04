@@ -15,7 +15,7 @@
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/bus`.
 
     "require": {
-        "laravelcollective/bus": "5.2.\*"
+        "laravelcollective/bus": "5.3.\*"
     }
 
 Next, update Composer from the Terminal:
@@ -54,6 +54,8 @@ The Artisan CLI can generate new command classes using the `make:command` comman
 	php artisan make:command PurchasePodcast
 
 The newly generated class will be placed in the `app/Commands` directory. By default, the command contains two methods: the constructor and the `handle` method. Of course, the constructor allows you to pass any relevant objects to the command, while the `handle` method executes the command. For example:
+
+	use Collective\Bus\Contracts\SelfHandling
 
 	class PurchasePodcast extends Command implements SelfHandling {
 
