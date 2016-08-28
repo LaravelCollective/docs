@@ -61,7 +61,7 @@ Finally, add two class aliases to the `aliases` array of `config/app.php`:
 #### Opening A Form
 
 ```php
-{!! Form::open(array('url' => 'foo/bar')) !!}
+{!! Form::open(['url' => 'foo/bar']) !!}
 	//
 {!! Form::close() !!}
 ```
@@ -69,7 +69,7 @@ Finally, add two class aliases to the `aliases` array of `config/app.php`:
 By default, a `POST` method will be assumed; however, you are free to specify another method:
 
 ```php
-echo Form::open(array('url' => 'foo/bar', 'method' => 'put'))
+echo Form::open(['url' => 'foo/bar', 'method' => 'put'])
 ```
 
 > **Note:** Since HTML forms only support `POST` and `GET`, `PUT` and `DELETE` methods will be spoofed by automatically adding a `_method` hidden field to your form.
@@ -77,23 +77,23 @@ echo Form::open(array('url' => 'foo/bar', 'method' => 'put'))
 You may also open forms that point to named routes or controller actions:
 
 ```php
-echo Form::open(array('route' => 'route.name'))
+echo Form::open(['route' => 'route.name'])
 
-echo Form::open(array('action' => 'Controller@method'))
+echo Form::open(['action' => 'Controller@method'])
 ```
 
 You may pass in route parameters as well:
 
 ```php
-echo Form::open(array('route' => array('route.name', $user->id)))
+echo Form::open(['route' => ['route.name', $user->id]])
 
-echo Form::open(array('action' => array('Controller@method', $user->id)))
+echo Form::open(['action' => ['Controller@method', $user->id]])
 ```
 
 If your form is going to accept file uploads, add a `files` option to your array:
 
 ```php
-echo Form::open(array('url' => 'foo/bar', 'files' => true))
+echo Form::open(['url' => 'foo/bar', 'files' => true])
 ```
 
 <a name="csrf-protection"></a>
@@ -110,10 +110,15 @@ echo Form::token();
 #### Attaching The CSRF Filter To A Route
 
 ```php
-Route::post('profile', array('before' => 'csrf', function()
-{
-	//
-}));
+Route::post('profile', 
+    [
+        'before' => 'csrf',
+        function()
+        {
+            //
+        }
+    ]
+);
 ```
 
 <a name="form-model-binding"></a>
@@ -124,7 +129,7 @@ Route::post('profile', array('before' => 'csrf', function()
 Often, you will want to populate a form based on the contents of a model. To do so, use the `Form::model` method:
 
 ```php
-echo Form::model($user, array('route' => array('user.update', $user->id)))
+echo Form::model($user, ['route' => ['user.update', $user->id]])
 ```
 
 Now, when you generate a form element, like a text input, the model's value matching the field's name will automatically be set as the field value. So, for example, for a text input named `email`, the user model's `email` attribute would be set as the value. However, there's more! If there is an item in the Session flash data matching the input name, that will take precedence over the model's value. So, the priority looks like this:
@@ -190,7 +195,7 @@ echo Form::label('email', 'E-Mail Address');
 #### Specifying Extra HTML Attributes
 
 ```php
-echo Form::label('email', 'E-Mail Address', array('class' => 'awesome'));
+echo Form::label('email', 'E-Mail Address', ['class' => 'awesome']);
 ```
 
 > **Note:** After creating a label, any form element you create with a name matching the label name will automatically receive an ID matching the label name as well.
@@ -215,14 +220,14 @@ echo Form::text('email', 'example@gmail.com');
 #### Generating A Password Input
 
 ```php
-echo Form::password('password', array('class' => 'awesome'));
+echo Form::password('password', ['class' => 'awesome']);
 ```
 
 #### Generating Other Inputs
 
 ```php
-echo Form::email($name, $value = null, $attributes = array());
-echo Form::file($name, $attributes = array());
+echo Form::email($name, $value = null, $attributes = []);
+echo Form::file($name, $attributes = []);
 ```
 
 <a name="checkboxes-and-radio-buttons"></a>
@@ -279,13 +284,13 @@ echo Form::file('image');
 #### Generating A Drop-Down List
 
 ```php
-echo Form::select('size', array('L' => 'Large', 'S' => 'Small'));
+echo Form::select('size', ['L' => 'Large', 'S' => 'Small']);
 ```
 
 #### Generating A Drop-Down List With Selected Default
 
 ```php
-echo Form::select('size', array('L' => 'Large', 'S' => 'Small'), 'S');
+echo Form::select('size', ['L' => 'Large', 'S' => 'Small'], 'S');
 ```
 
 #### Generating a Drop-Down List With an Empty Placeholder
@@ -293,16 +298,16 @@ echo Form::select('size', array('L' => 'Large', 'S' => 'Small'), 'S');
 This will create an `<option>` element with no value as the very first option of your drop-down.
 
 ```php
-echo Form::select('size', array('L' => 'Large', 'S' => 'Small'), null, ['placeholder' => 'Pick a size...']);
+echo Form::select('size', ['L' => 'Large', 'S' => 'Small'], null, ['placeholder' => 'Pick a size...']);
 ```
 
 #### Generating A Grouped List
 
 ```php
-echo Form::select('animal', array(
-	'Cats' => array('leopard' => 'Leopard'),
-	'Dogs' => array('spaniel' => 'Spaniel'),
-));
+echo Form::select('animal',[
+	'Cats' => ['leopard' => 'Leopard'],
+	'Dogs' => ['spaniel' => 'Spaniel'],
+]);
 ```
 
 #### Generating A Drop-Down List With A Range
@@ -408,7 +413,7 @@ This would result in something like the following HTML output:
 Generate a HTML link to the given URL.
 
 ```php
-echo link_to('foo/bar', $title = null, $attributes = array(), $secure = null);
+echo link_to('foo/bar', $title = null, $attributes = [], $secure = null);
 ```
 
 #### link_to_asset
@@ -416,7 +421,7 @@ echo link_to('foo/bar', $title = null, $attributes = array(), $secure = null);
 Generate a HTML link to the given asset.
 
 ```php
-echo link_to_asset('foo/bar.zip', $title = null, $attributes = array(), $secure = null);
+echo link_to_asset('foo/bar.zip', $title = null, $attributes = [], $secure = null);
 ```
 
 #### link_to_route
@@ -424,7 +429,7 @@ echo link_to_asset('foo/bar.zip', $title = null, $attributes = array(), $secure 
 Generate a HTML link to the given named route.
 
 ```php
-echo link_to_route('route.name', $title = null, $parameters = array(), $attributes = array());
+echo link_to_route('route.name', $title = null, $parameters = [], $attributes = []);
 ```
 
 #### link_to_action
@@ -432,5 +437,5 @@ echo link_to_route('route.name', $title = null, $parameters = array(), $attribut
 Generate a HTML link to the given controller action.
 
 ```php
-echo link_to_action('HomeController@getIndex', $title = null, $parameters = array(), $attributes = array());
+echo link_to_action('HomeController@getIndex', $title = null, $parameters = [], $attributes = []);
 ```
