@@ -2,9 +2,9 @@
 
 - [Installation](#installation)
 - [Opening A Form](#opening-a-form)
-- [CSRF Protection](#csrf-protection)
 - [Form Model Binding](#form-model-binding)
 - [Form Model Accessors](#form-model-accessors)
+- [CSRF Protection](#csrf-protection)
 - [Labels](#labels)
 - [Text, Text Area, Password & Hidden Fields](#text)
 - [Checkboxes and Radio Buttons](#checkboxes-and-radio-buttons)
@@ -61,7 +61,7 @@ Finally, add two class aliases to the `aliases` array of `config/app.php`:
 #### Opening A Form
 
 ```php
-{!! Form::open(array('url' => 'foo/bar')) !!}
+{!! Form::open(['url' => 'foo/bar']) !!}
 	//
 {!! Form::close() !!}
 ```
@@ -69,7 +69,7 @@ Finally, add two class aliases to the `aliases` array of `config/app.php`:
 By default, a `POST` method will be assumed; however, you are free to specify another method:
 
 ```php
-echo Form::open(array('url' => 'foo/bar', 'method' => 'put'))
+echo Form::open(['url' => 'foo/bar', 'method' => 'put'])
 ```
 
 > **Note:** Since HTML forms only support `POST` and `GET`, `PUT` and `DELETE` methods will be spoofed by automatically adding a `_method` hidden field to your form.
@@ -77,43 +77,23 @@ echo Form::open(array('url' => 'foo/bar', 'method' => 'put'))
 You may also open forms that point to named routes or controller actions:
 
 ```php
-echo Form::open(array('route' => 'route.name'))
+echo Form::open(['route' => 'route.name'])
 
-echo Form::open(array('action' => 'Controller@method'))
+echo Form::open(['action' => 'Controller@method'])
 ```
 
 You may pass in route parameters as well:
 
 ```php
-echo Form::open(array('route' => array('route.name', $user->id)))
+echo Form::open(['route' => ['route.name', $user]])
 
-echo Form::open(array('action' => array('Controller@method', $user->id)))
+echo Form::open(['action' => ['Controller@method', $user]])
 ```
 
 If your form is going to accept file uploads, add a `files` option to your array:
 
 ```php
-echo Form::open(array('url' => 'foo/bar', 'files' => true))
-```
-
-<a name="csrf-protection"></a>
-## CSRF Protection
-
-#### Adding The CSRF Token To A Form
-
-Laravel provides an easy method of protecting your application from cross-site request forgeries. First, a random token is placed in your user's session. If you use the `Form::open` method with `POST`, `PUT` or `DELETE` the CSRF token will be added to your forms as a hidden field automatically. Alternatively, if you wish to generate the HTML for the hidden CSRF field, you may use the `token` method:
-
-```php
-echo Form::token();
-```
-
-#### Attaching The CSRF Filter To A Route
-
-```php
-Route::post('profile', array('before' => 'csrf', function()
-{
-	//
-}));
+echo Form::open(['url' => 'foo/bar', 'files' => true])
 ```
 
 <a name="form-model-binding"></a>
@@ -124,7 +104,7 @@ Route::post('profile', array('before' => 'csrf', function()
 Often, you will want to populate a form based on the contents of a model. To do so, use the `Form::model` method:
 
 ```php
-echo Form::model($user, array('route' => array('user.update', $user->id)))
+echo Form::model($user, ['route' => ['user.update', $user]])
 ```
 
 Now, when you generate a form element, like a text input, the model's value matching the field's name will automatically be set as the field value. So, for example, for a text input named `email`, the user model's `email` attribute would be set as the value. However, there's more! If there is an item in the Session flash data matching the input name, that will take precedence over the model's value. So, the priority looks like this:
@@ -142,7 +122,7 @@ This allows you to quickly build forms that not only bind to model values, but e
 
 Laravel's [Eloquent Accessor](http://laravel.com/docs/5.2/eloquent-mutators#accessors-and-mutators) allow you to manipulate a model attribute before returning it. This can be extremely useful for defining global date formats, for example. However, the date format used for display might not match the date format used for form elements. You can solve this by creating two separate accessors: a standard accessor, *and/or* a form accessor.
 
-To define a form accessor, create a `formFooAttribute` method on your model where `Foo` is the "camel" cased name of the column you wish to access. In this example, we'll define an accessor for the `date_of_birth` attribute. The accessor will automatically be called by the HTML Form Builder when attempting to pre-fill a form field when `Form::model()` is used.
+To use form accessors, first include the `FormAccessible` trait in the model, then create a `formFooAttribute` method on your model where `Foo` is the "camel" cased name of the column you wish to access. In this example, we'll define an accessor for the `date_of_birth` attribute. The accessor will automatically be called by the HTML Form Builder when attempting to pre-fill a form field when `Form::model()` is used.
 
 ```php
 <?php
@@ -151,9 +131,12 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Collective\Html\Eloquent\FormAccessible;
 
 class User extends Model
 {
+    use FormAccessible;
+
     /**
      * Get the user's first name.
      *
@@ -178,6 +161,17 @@ class User extends Model
 }
 ```
 
+<a name="csrf-protection"></a>
+## CSRF Protection
+
+If you use the `Form::open` or `Form::model` method with `POST`, `PUT` or `DELETE` the CSRF token used by Laravel for CSRF protection will be added to your forms as a hidden field automatically. Alternatively, if you wish to generate the HTML for the hidden CSRF field, you may use the `token` method:
+
+```php
+echo Form::token();
+```
+
+For more information on Laravel's CSRF protection, see [the relevant section in Laravel's documentation](https://laravel.com/docs/5.2/routing#csrf-protection).
+
 <a name="labels"></a>
 ## Labels
 
@@ -190,7 +184,7 @@ echo Form::label('email', 'E-Mail Address');
 #### Specifying Extra HTML Attributes
 
 ```php
-echo Form::label('email', 'E-Mail Address', array('class' => 'awesome'));
+echo Form::label('email', 'E-Mail Address', ['class' => 'awesome']);
 ```
 
 > **Note:** After creating a label, any form element you create with a name matching the label name will automatically receive an ID matching the label name as well.
@@ -215,7 +209,7 @@ echo Form::text('email', 'example@gmail.com');
 #### Generating A Password Input
 
 ```php
-echo Form::password('password', array('class' => 'awesome'));
+echo Form::password('password', ['class' => 'awesome']);
 ```
 
 #### Generating Other Inputs
@@ -279,13 +273,13 @@ echo Form::file('image');
 #### Generating A Drop-Down List
 
 ```php
-echo Form::select('size', array('L' => 'Large', 'S' => 'Small'));
+echo Form::select('size', ['L' => 'Large', 'S' => 'Small']);
 ```
 
 #### Generating A Drop-Down List With Selected Default
 
 ```php
-echo Form::select('size', array('L' => 'Large', 'S' => 'Small'), 'S');
+echo Form::select('size', ['L' => 'Large', 'S' => 'Small'], 'S');
 ```
 
 #### Generating a Drop-Down List With an Empty Placeholder
@@ -293,16 +287,16 @@ echo Form::select('size', array('L' => 'Large', 'S' => 'Small'), 'S');
 This will create an `<option>` element with no value as the very first option of your drop-down.
 
 ```php
-echo Form::select('size', array('L' => 'Large', 'S' => 'Small'), null, ['placeholder' => 'Pick a size...']);
+echo Form::select('size', ['L' => 'Large', 'S' => 'Small'], null, ['placeholder' => 'Pick a size...']);
 ```
 
 #### Generating A Grouped List
 
 ```php
-echo Form::select('animal', array(
-	'Cats' => array('leopard' => 'Leopard'),
-	'Dogs' => array('spaniel' => 'Spaniel'),
-));
+echo Form::select('animal', [
+	'Cats' => ['leopard' => 'Leopard'],
+	'Dogs' => ['spaniel' => 'Spaniel'],
+]);
 ```
 
 #### Generating A Drop-Down List With A Range
