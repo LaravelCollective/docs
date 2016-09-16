@@ -2,9 +2,9 @@
 
 - [Installation](#installation)
 - [Opening A Form](#opening-a-form)
-- [CSRF Protection](#csrf-protection)
 - [Form Model Binding](#form-model-binding)
 - [Form Model Accessors](#form-model-accessors)
+- [CSRF Protection](#csrf-protection)
 - [Labels](#labels)
 - [Text, Text Area, Password & Hidden Fields](#text)
 - [Checkboxes and Radio Buttons](#checkboxes-and-radio-buttons)
@@ -96,31 +96,6 @@ If your form is going to accept file uploads, add a `files` option to your array
 echo Form::open(['url' => 'foo/bar', 'files' => true])
 ```
 
-<a name="csrf-protection"></a>
-## CSRF Protection
-
-#### Adding The CSRF Token To A Form
-
-Laravel provides an easy method of protecting your application from cross-site request forgeries. First, a random token is placed in your user's session. If you use the `Form::open` method with `POST`, `PUT` or `DELETE` the CSRF token will be added to your forms as a hidden field automatically. Alternatively, if you wish to generate the HTML for the hidden CSRF field, you may use the `token` method:
-
-```php
-echo Form::token();
-```
-
-#### Attaching The CSRF Filter To A Route
-
-```php
-Route::post('profile', 
-    [
-        'before' => 'csrf',
-        function()
-        {
-            //
-        }
-    ]
-);
-```
-
 <a name="form-model-binding"></a>
 ## Form Model Binding
 
@@ -145,9 +120,9 @@ This allows you to quickly build forms that not only bind to model values, but e
 <a name="form-model-accessors"></a>
 #### Form Model Accessors
 
-Laravel's [Eloquent Accessor](http://laravel.com/docs/5.2/eloquent-mutators#accessors-and-mutators) allow you to manipulate a model attribute before returning it. This can be extremely useful for defining global date formats, for example. However, the date format used for display might not match the date format used for form elements. You can solve this by creating two separate accessors: a standard accessor, *and/or* a form accessor.
+Laravel’s [Eloquent Accessor](http://laravel.com/docs/5.3/eloquent-mutators#accessors-and-mutators) allow you to manipulate a model attribute before returning it. This can be extremely useful for defining global date formats, for example. However, the date format used for display might not match the date format used for form elements. You can solve this by creating two separate accessors: a standard accessor, *and/or* a form accessor.
 
-To define a form accessor, create a `formFooAttribute` method on your model where `Foo` is the "camel" cased name of the column you wish to access. In this example, we'll define an accessor for the `date_of_birth` attribute. The accessor will automatically be called by the HTML Form Builder when attempting to pre-fill a form field when `Form::model()` is used.
+To use form accessors, first include the `FormAccessible` trait in the model then create a `formFooAttribute` method on your model where `Foo` is the “camel-cased” name of the column you wish to access. In this example, we’ll define an accessor for the `date_of_birth` attribute. The accessor will automatically be called by the HTML Form Builder when attempting to pre-fill a form field when `Form::model()` is used.
 
 ```php
 <?php
@@ -156,9 +131,12 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Collective\Html\Eloquent\FormAccessible;
 
 class User extends Model
 {
+    use FormAccessible;
+
     /**
      * Get the user’s date of birth.
      *
@@ -182,6 +160,18 @@ class User extends Model
     }
 }
 ```
+
+<a name="csrf-protection"></a>
+## CSRF Protection
+
+If you use the `Form::open` or `Form::model` method with `POST`, `PUT` or `DELETE` the CSRF token used by Laravel for CSRF protection will be added to your forms as a hidden field automatically. Alternatively, if you wish to generate the HTML for the hidden CSRF field, you may use the `token` method:
+
+```php
+echo Form::token();
+```
+
+For more information on Laravel’s CSRF protection, see [the relevant section in Laravel’s documentation](https://laravel.com/docs/5.3/csrf).
+
 
 <a name="labels"></a>
 ## Labels
@@ -360,7 +350,7 @@ echo Form::myField();
 
 #### Registering A Custom Component
 
-Custom Components are similar to Custom Macros, however instead of using a closure to generate the resulting HTML, Components utilize [Laravel Blade Templates](http://laravel.com/docs/5.2/blade). Components can be incredibly useful for developers who use [Twitter Bootstrap](http://getbootstrap.com/), or any other front-end framework, which requires additional markup to properly render forms.
+Custom Components are similar to Custom Macros, however instead of using a closure to generate the resulting HTML, Components utilize [Laravel Blade Templates](http://laravel.com/docs/5.3/blade). Components can be incredibly useful for developers who use [Twitter Bootstrap](http://getbootstrap.com/), or any other front-end framework, which requires additional markup to properly render forms.
 
 Let's build a Form Component for a simple Bootstrap text input. You might consider registering your Components inside a Service Provider's `boot` method.
 
