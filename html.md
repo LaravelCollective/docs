@@ -130,7 +130,7 @@ class User extends Model
     use FormAccessible;
 
     /**
-     * Get the user's first name.
+     * Get the user's date of birth.
      *
      * @param  string  $value
      * @return string
@@ -141,7 +141,7 @@ class User extends Model
     }
 
     /**
-     * Get the user's first name for forms.
+     * Get the user's date of birth for forms.
      *
      * @param  string  $value
      * @return string
