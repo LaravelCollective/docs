@@ -88,6 +88,18 @@ If your form is going to accept file uploads, add a `files` option to your array
 echo Form::open(['url' => 'foo/bar', 'files' => true])
 ```
 
+By default, the `routes.php` file contains a single route as well as a route group that applies the `web` middleware group to all routes it contains. This middleware group provides session state and CSRF protection to routes.
+
+Any routes not placed within the `web` middleware group **will not have** access to sessions and CSRF protection, so make sure any routes that need these features are placed within the group. Typically, you will place most of your routes within this group:
+
+```php
+Route::group(['middleware' => ['web']], function () {
+    //
+});
+```
+
+For more information check the [Laravel Docs](https://laravel.com/docs/5.2/routing#basic-routing).
+
 <a name="form-model-binding"></a>
 ## Form Model Binding
 
