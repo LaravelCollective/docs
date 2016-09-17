@@ -291,6 +291,12 @@ This will create an `<option>` element with no value as the very first option of
 echo Form::select('size', ['L' => 'Large', 'S' => 'Small'], null, ['placeholder' => 'Pick a size...']);
 ```
 
+#### Generating a List With Multiple Selectable Options
+
+```php
+echo Form::select('size', ['L' => 'Large', 'S' => 'Small'], null, ['multiple' => true]);
+```
+ 
 #### Generating A Grouped List
 
 ```php
