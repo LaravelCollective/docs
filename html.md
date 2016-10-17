@@ -20,17 +20,9 @@
 <a name="installation"></a>
 ## Installation
 
-Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/html`.
+Begin by installing this package through Composer. Run the following from the terminal:
 
-```json
-"require": {
-    "laravelcollective/html": "5.3.*"
-}
-```
-
-Next, update Composer from the Terminal:
-
-    composer update
+    composer require "laravelcollective/html":"^5.3.0"
 
 Next, add your new provider to the `providers` array of `config/app.php`:
 
@@ -296,7 +288,7 @@ echo Form::select('size', ['L' => 'Large', 'S' => 'Small'], null, ['placeholder'
 ```php
 echo Form::select('size', ['L' => 'Large', 'S' => 'Small'], null, ['multiple' => true]);
 ```
- 
+
 #### Generating A Grouped List
 
 ```php

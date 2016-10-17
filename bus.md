@@ -12,15 +12,9 @@
 
 <a name="installation"></a>
 ## Installation
-Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/bus`.
+Begin by installing this package through Composer. Run the following from the terminal:
 
-    "require": {
-        "laravelcollective/bus": "5.3.\*"
-    }
-
-Next, update Composer from the Terminal:
-
-    composer update
+    composer require "laravelcollective/bus":"^5.3.0"
 
 Remove `Illuminate\Bus\BusServiceProvider` from your app.php configuration file.
 
