@@ -24,7 +24,7 @@ Begin by installing this package through Composer. Edit your project's `composer
 
 ```json
 "require": {
-    "laravelcollective/html": "5.3.*"
+    "laravelcollective/html": "5.4.*"
 }
 ```
 
