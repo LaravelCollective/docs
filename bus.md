@@ -1,5 +1,6 @@
 # Command Bus
 
+> Note: This package is not yet ready for 5.4
 
 - [Installation](#installation)
 - [Introduction](#introduction)
