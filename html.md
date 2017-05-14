@@ -22,13 +22,7 @@
 
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/html`.
 
-```
-composer require laravelcollective/html
-```
-
-Next, update Composer from the Terminal:
-
-    composer update
+    composer require "laravelcollective/html":"^5.4.0"
 
 Next, add your new provider to the `providers` array of `config/app.php`:
 
