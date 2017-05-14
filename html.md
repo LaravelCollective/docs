@@ -22,10 +22,8 @@
 
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/html`.
 
-```json
-"require": {
-    "laravelcollective/html": "5.3.*"
-}
+```
+composer require laravelcollective/html
 ```
 
 Next, update Composer from the Terminal:
@@ -110,7 +108,7 @@ echo Form::token();
 #### Attaching The CSRF Filter To A Route
 
 ```php
-Route::post('profile', 
+Route::post('profile',
     [
         'before' => 'csrf',
         function()
