@@ -92,7 +92,7 @@ You may catch the "live" output of your remote commands by passing a Closure int
 
 If you need to define a group of commands that should always be run together, you may use the `define` method to define a `task`:
 
-	SSH::into('staging')->define('deploy', [
+	$ssh = SSH::into('staging')->define('deploy', [
 		'cd /var/www',
 		'git pull origin master',
 		'php artisan migrate',
@@ -100,7 +100,7 @@ If you need to define a group of commands that should always be run together, yo
 
 Once the task has been defined, you may use the `task` method to run it:
 
-	SSH::into('staging')->task('deploy', function($line)
+	$ssh->task('deploy', function($line)
 	{
 		echo $line.PHP_EOL;
 	});
