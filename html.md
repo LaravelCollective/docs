@@ -127,7 +127,7 @@ echo Form::model($user, ['route' => ['user.update', $user->id]])
 Now, when you generate a form element, like a text input, the model's value matching the field's name will automatically be set as the field value. So, for example, for a text input named `email`, the user model's `email` attribute would be set as the value. However, there's more! If there is an item in the Session flash data matching the input name, that will take precedence over the model's value. So, the priority looks like this:
 
 1. Session Flash Data (Old Input)
-2. Data From Current Request (Request::input method)
+2. Data From Current [Request](https://laravel.com/docs/requests) (via Request::input method)
 3. Explicitly Passed Value
 4. Model Attribute Data
 
