@@ -16,7 +16,7 @@
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/remote`.
 
     "require": {
-        "laravelcollective/remote": "5.3.\*"
+        "laravelcollective/remote": "5.4.*"
     }
 
 Next, update Composer from the Terminal:
