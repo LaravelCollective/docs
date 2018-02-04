@@ -396,33 +396,57 @@ This would result in something like the following HTML output:
 <a name="generating-urls"></a>
 ##Generating URLs
 
-#### link_to
+#### Html::link
 
 Generate a HTML link to the given URL.
+
+```php
+{!! Html::link('foo/bar', $title = null, $attributes = [], $secure = null) !!}
+```
+
+or
 
 ```php
 echo link_to('foo/bar', $title = null, $attributes = [], $secure = null);
 ```
 
-#### link_to_asset
+#### Html::linkAsset
 
 Generate a HTML link to the given asset.
+
+```php
+{!! Html::linkAsset('foo/bar.zip', $title = null, $attributes = [], $secure = null) !!}
+```
+
+or
 
 ```php
 echo link_to_asset('foo/bar.zip', $title = null, $attributes = [], $secure = null);
 ```
 
-#### link_to_route
+#### Html::linkAsset
 
 Generate a HTML link to the given named route.
+
+```php
+{!! Html::linkAsset('route.name', $title = null, $parameters = [], $attributes = []) !!}
+```
+
+or
 
 ```php
 echo link_to_route('route.name', $title = null, $parameters = [], $attributes = []);
 ```
 
-#### link_to_action
+#### Html::linkAction
 
 Generate a HTML link to the given controller action.
+
+```php
+{!! Html::linkAction('HomeController@getIndex', $title = null, $parameters = [], $attributes = []) !!}
+```
+
+or
 
 ```php
 echo link_to_action('HomeController@getIndex', $title = null, $parameters = [], $attributes = []);
