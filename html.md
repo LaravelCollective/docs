@@ -47,6 +47,22 @@ Finally, add two class aliases to the `aliases` array of `config/app.php`:
 
 > Looking to install this package in <a href="http://lumen.laravel.com" target="\_blank">Lumen</a>? First of all, making this package compatible with Lumen will require some core changes to Lumen, which we believe would dampen the effectiveness of having Lumen in the first place. Secondly, it is our belief that if you need this package in your application, then you should be using Laravel anyway.
 
+<a name="important"></a>
+## Important
+
+Since this package internally uses strict comparisons (`===` instead of `==`) be carefull when passing numeric values into your forms.
+Values in HTML are submitted as strings and Laravel old values stored in flash session are strings.
+
+In this example, this package will correctly insert `selected` HTML attribute into the radio input - because the passed value `'1'` strictly equals to the old submitted value in the session `'1'`:
+```php
+echo Form::radio('category_id', '1'); //  '1' === '1' - comparing passed value and old session value
+```
+
+However, in this example, the passed integer value `1` is not strictly equal to the old submitted string value `'1'` in the session and the `selected` HTML attribute will not be inserted:
+```php
+echo Form::radio('category_id', 1); // 1 === '1' - comparing passed value and old session value
+```
+
 <a name="opening-a-form"></a>
 ## Opening A Form
 
