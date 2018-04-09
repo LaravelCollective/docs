@@ -1,6 +1,7 @@
 # Forms & HTML
 
 - [Installation](#installation)
+- [Important](#important)
 - [Opening A Form](#opening-a-form)
 - [CSRF Protection](#csrf-protection)
 - [Form Model Binding](#form-model-binding)
