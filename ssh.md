@@ -13,37 +13,11 @@
 
 > If you have changed the top-level namespace to something like 'MyCompany', then you would use the new namespace instead of 'App'.
 
-Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/remote`.
+Begin by installing this package through Composer. type from the terminal:
 
-    "require": {
-        "laravelcollective/remote": "5.4.*"
-    }
+        composer require laravelcollective/remote:5.6.*
 
-Next, update Composer from the Terminal:
-
-    composer update
-
-Next, add your new provider to the `providers` array of `config/app.php`:
-
-```php
-  'providers' => [
-    // ...
-    Collective\Remote\RemoteServiceProvider::class,
-    // ...
-  ],
-```
-
-Next, add the class alias to the `aliases` array of `config/app.php`:
-
-```php
-  'aliases' => [
-    // ...
-      'SSH' => Collective\Remote\RemoteFacade::class,
-    // ...
-  ],
-```
-
-Finally, publish the config file:
+Nex, publish the config file:
 
 ```php
   php artisan vendor:publish --provider="Collective\Remote\RemoteServiceProvider"
