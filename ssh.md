@@ -16,10 +16,6 @@
 Begin by installing this package through Composer. type from the terminal:
 
         composer require laravelcollective/remote:5.6.*
-	
-Next, update Composer from the Terminal:
-
-    composer update
 
 Nex, publish the config file:
 
