@@ -51,7 +51,7 @@ Finally, add two class aliases to the `aliases` array of `config/app.php`:
 <a name="important"></a>
 ## Important
 
-Since this package internally uses strict comparisons (`===` instead of `==`) be carefull when passing numeric values into your forms.
+Since this package internally uses strict comparisons (`===` instead of `==`) be careful when passing numeric values into your forms.
 Values in HTML are submitted as strings and Laravel old values stored in flash session are strings.
 
 In this example, this package will correctly insert `selected` HTML attribute into the radio input - because the passed value `'1'` strictly equals to the old submitted value in the session `'1'`:
