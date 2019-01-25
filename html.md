@@ -53,9 +53,9 @@ Finally, add two class aliases to the `aliases` array of `config/app.php`:
 #### Opening A Form
 
 ```php
-{!! Form::open(['url' => 'foo/bar']) !!}
+{{ Form::open(['url' => 'foo/bar']) }}
 	//
-{!! Form::close() !!}
+{{ Form::close() }}
 ```
 
 By default, a `POST` method will be assumed; however, you are free to specify another method:
