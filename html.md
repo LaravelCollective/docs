@@ -352,7 +352,7 @@ echo Form::myField();
 ```
 
 <a name="custom-components"></a>
-##Custom Components
+## Custom Components
 
 #### Registering A Custom Component
 
@@ -402,7 +402,7 @@ This would result in something like the following HTML output:
 ```
 
 <a name="generating-urls"></a>
-##Generating URLs
+## Generating URLs
 
 #### link_to
 
