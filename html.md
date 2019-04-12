@@ -318,6 +318,12 @@ echo Form::selectRange('number', 10, 20);
 echo Form::selectMonth('month');
 ```
 
+#### Generating A List From A Model
+
+```php
+echo Form::select('size', \App\ShirtSizes::pluck('size','id'), null, ['placeholder' => 'Choose a size'])
+```
+
 <a name="buttons"></a>
 ## Buttons
 
