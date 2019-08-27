@@ -3,3 +3,4 @@
 - [Remote (SSH)](/docs/master/ssh)
 - [Iron Queue](/docs/master/iron-queue)
 - [Command Bus](/docs/master/bus)
+- [Errors](/docs/master/errors)

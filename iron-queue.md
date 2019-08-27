@@ -1,5 +1,7 @@
 # IronMQ Laravel Queue Driver
 
+> Note: This package was abandoned as of Laravel 5.7
+
 This package provides a IronMQ (~2.0 SDK) driver for the Laravel queue system and matches the driver that was found in Laravel 5.1.
 
 > Note: This package is not yet ready for 5.4

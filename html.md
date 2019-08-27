@@ -23,7 +23,7 @@
 
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/html`.
 
-    composer require "laravelcollective/html":"^5.4.0"
+    composer require "laravelcollective/html":"^6.0"
 
 Next, add your new provider to the `providers` array of `config/app.php`:
 
@@ -171,8 +171,8 @@ use Collective\Html\Eloquent\FormAccessible;
 
 class User extends Model
 {
-    use FormAccessible;     
-    
+    use FormAccessible;
+
     /**
      * Get the user's first name.
      *
