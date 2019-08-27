@@ -23,27 +23,8 @@
 
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/html`.
 
-    composer require "laravelcollective/html":"^6.0"
-
-Next, add your new provider to the `providers` array of `config/app.php`:
-
-```php
-  'providers' => [
-    // ...
-    Collective\Html\HtmlServiceProvider::class,
-    // ...
-  ],
 ```
-
-Finally, add two class aliases to the `aliases` array of `config/app.php`:
-
-```php
-  'aliases' => [
-    // ...
-      'Form' => Collective\Html\FormFacade::class,
-      'Html' => Collective\Html\HtmlFacade::class,
-    // ...
-  ],
+$ composer require laravelcollective/html
 ```
 
 > Looking to install this package in <a href="http://lumen.laravel.com" target="\_blank">Lumen</a>? First of all, making this package compatible with Lumen will require some core changes to Lumen, which we believe would dampen the effectiveness of having Lumen in the first place. Secondly, it is our belief that if you need this package in your application, then you should be using Laravel anyway.
