@@ -23,7 +23,7 @@
 
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `laravelcollective/html`.
 
-```
+```bash
 $ composer require laravelcollective/html
 ```
 
