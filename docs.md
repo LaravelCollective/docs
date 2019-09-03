@@ -1,5 +1,3 @@
 - [Annotations](/docs/master/annotations)
 - [HTML & Forms](/docs/master/html)
 - [Remote (SSH)](/docs/master/ssh)
-- [Iron Queue](/docs/master/iron-queue)
-- [Command Bus](/docs/master/bus)
