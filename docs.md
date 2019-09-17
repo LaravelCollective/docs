@@ -1,3 +1,1 @@
-- [Annotations](/docs/master/annotations)
-- [HTML & Forms](/docs/master/html)
-- [Remote (SSH)](/docs/master/ssh)
+- [Errors](/docs/master/errors)
