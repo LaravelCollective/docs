@@ -3,6 +3,7 @@
 - [Installation](#installation)
 - [Important](#important)
 - [Publish](#publish)
+- [Layout](#layout)
 
 <a name="installation"></a>
 ## Installation
@@ -24,3 +25,8 @@ This package is very generic and simply publishes some files to your application
 ```bash
 $ artisan vendor:publish
 ```
+
+<a name="layout"></a>
+## Layout
+
+There are two main layouts. The expected illustrated layout with the elegant SVGs is `illustrated` but you can also use the `branded` layout if you want to inject Brand images with a solid color sidebar.
