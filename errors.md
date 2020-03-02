@@ -23,7 +23,7 @@ This package is very generic and simply publishes some files to your application
 ## Publish
 
 ```bash
-$ artisan vendor:publish
+$ php artisan vendor:publish
 ```
 
 <a name="layout"></a>
