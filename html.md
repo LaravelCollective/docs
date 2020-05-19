@@ -77,7 +77,11 @@ You may pass in route parameters as well:
 ```php
 echo Form::open(['route' => ['route.name', $user->id]])
 
+echo Form::open(['route' => ['route.name', 'id' => $user->id, 'foo' => 'bar']])
+
 echo Form::open(['action' => ['Controller@method', $user->id]])
+
+echo Form::open(['action' => ['Controller@method', 'id' => $user->id, 'foo' => 'bar']])
 ```
 
 If your form is going to accept file uploads, add a `files` option to your array:
