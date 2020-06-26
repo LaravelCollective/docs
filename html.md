@@ -438,3 +438,11 @@ Generate a HTML link to the given controller action.
 ```php
 echo link_to_action('HomeController@getIndex', $title = null, $parameters = [], $attributes = []);
 ```
+
+#### mailto
+
+Generate a HTML link to the given email address. **Note:** this obfuscates the email address to prevent spam-bots from sniffing it using the `email` method also provide with this package.
+
+```php
+echo mailto('foo@bar.baz', $title = null, $attributes = [], $escape = true);
+```
