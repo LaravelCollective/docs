@@ -36,6 +36,12 @@ The configuration file is located at `config/remote.php`, and contains all of th
 <a name="basic-usage"></a>
 ## Basic Usage
 
+#### Add Necessary Use Case
+
+Your application needs the alias to run SSH commands:
+
+	use Collective\Remote\RemoteFacade as SSH;
+
 #### Running Commands On The Default Server
 
 To run commands on your `default` remote connection, use the `SSH::run` method:
