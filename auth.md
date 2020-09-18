@@ -18,7 +18,8 @@ $ composer require laravelcollective/auth
 <a name="important"></a>
 ## Important
 
-This package is an agnostic fork of Laravel UI and only handles the Auth components. It provides agnostic HTML blade views. For any UI components please see [laravelcollective/presets](laravelcollective.com/docs/presets)
+This package is an agnostic fork of Laravel UI and only handles the Auth components. It provides agnostic HTML blade views.
+<!-- For any UI components please see [laravelcollective/presets](laravelcollective.com/docs/presets) -->
 
 <a name="make"></a>
 ## Make Auth
@@ -35,4 +36,13 @@ The Auth Foundation components are all the `auth-backend` components from Larave
 <a name="migration"></a>
 ## Migrating from Laravel/UI to Collective/Auth
 
-Migration should take less than 2 minutes overall. Simply switch any namespaces of `Illuminate\Foundation\Auth` to `Collective\Auth\Foundation` and in your routes switch `Auth::routes()` to `CollectiveAuth::routes()`. Everything else should work the same.
+Migration should take less than 2 minutes overall.
+Simply switch any namespaces of:
+
+`Illuminate\Foundation\Auth` to `Collective\Auth\Foundation`
+
+and in your routes switch:
+
+`Auth::routes()` to `CollectiveAuth::routes()`.
+
+Everything else should work the same.
