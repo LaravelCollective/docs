@@ -11,7 +11,7 @@
 - [Checkboxes and Radio Buttons](#checkboxes-and-radio-buttons)
 - [File Input](#file-input)
 - [Number Input](#number)
-- [Date Input](#date)
+- [Date, DatetimeLocal & Time Fields](#date)
 - [Drop-Down Lists](#drop-down-lists)
 - [Buttons](#buttons)
 - [Custom Macros](#custom-macros)
@@ -258,12 +258,24 @@ echo Form::number('name', 'value');
 ```
 
 <a name="date"></a>
-## Date
+## Date, DatetimeLocal & Time Fields
 
 #### Generating A Date Input
 
 ```php
 echo Form::date('name', \Carbon\Carbon::now());
+```
+
+#### Generating A DatetimeLocal Input
+
+```php
+echo Form::datetimeLocal('name', \Carbon\Carbon::now());
+```
+
+#### Generating A Time Input
+
+```php
+echo Form::time('name', \Carbon\Carbon::now());
 ```
 
 <a name="file-input"></a>
