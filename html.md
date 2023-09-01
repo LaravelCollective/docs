@@ -18,6 +18,9 @@
 - [Custom Components](#custom-components)
 - [Generating URLs](#generating-urls)
 
+## Replacement
+If you're looking to replace this package due to it's retirement we recommend using [Shift](https://laravelshift.com/convert-laravelcollective-html-to-spatie-laravel-html): 
+
 <a name="installation"></a>
 ## Installation
 
