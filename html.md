@@ -1,5 +1,6 @@
 # Forms & HTML
 
+- [Replacement](#replacement)
 - [Installation](#installation)
 - [Important](#important)
 - [Opening A Form](#opening-a-form)
@@ -17,6 +18,10 @@
 - [Custom Macros](#custom-macros)
 - [Custom Components](#custom-components)
 - [Generating URLs](#generating-urls)
+
+<a name="replacement"></a>
+## Replacement
+If you're looking to replace this package due to it's retirement we recommend using [Shift](https://laravelshift.com/convert-laravelcollective-html-to-spatie-laravel-html): 
 
 <a name="installation"></a>
 ## Installation
